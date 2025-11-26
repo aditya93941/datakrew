@@ -1,0 +1,40 @@
+# Copy this to backend/.env and fill in your values
+
+# Server Port (optional - defaults to 3000)
+PORT=3000
+
+# Your Clay Webhook URL
+# Format: https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-<YOUR-ID>
+# Get this from Clay dashboard → Your Table → Webhooks
+CLAY_WEBHOOK_URL=https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-28318a43-ab1a-4180-83f0-20fcc6b5f0c4
+
+# Column name in your Clay table
+# Check your Clay table to see which column you want to populate
+# Common options: "address", "email", "query", "search_term", "name"
+CLAY_COLUMN_NAME=address
+
+# Your Clay API Key (REQUIRED for real search results)
+# Get this from: Clay dashboard → Settings → API Keys → Create/Copy key
+CLAY_API_KEY=your_clay_api_key_here
+
+# Your Clay Table ID (REQUIRED for real search results)
+# How to find it:
+# 1. Go to your Clay table in the dashboard
+# 2. Look at the URL: https://app.clay.com/.../tables/t_XXX/...
+# 3. The table ID is the part after "tables/" (e.g., t_0t6bc41DUHR3KZEbFxg)
+CLAY_TABLE_ID=your_table_id_here
+
+# Your Clay Workbook ID (OPTIONAL but recommended)
+# How to find it:
+# 1. Look at your table URL: https://app.clay.com/.../workbooks/wb_XXX/tables/t_XXX
+# 2. The workbook ID is the part after "workbooks/" (e.g., wb_0t6bc412tSp7Uk9NuzE)
+# 3. This helps the API find your table more reliably
+CLAY_WORKBOOK_ID=your_workbook_id_here
+
+# Your Clay Workspace ID (OPTIONAL but recommended)
+# How to find it:
+# 1. Look at your table URL: https://app.clay.com/workspaces/XXX/workbooks/...
+# 2. The workspace ID is the number after "workspaces/" (e.g., 870939)
+# 3. This helps the API find your table more reliably
+CLAY_WORKSPACE_ID=your_workspace_id_here
+
