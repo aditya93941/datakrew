@@ -33,7 +33,7 @@ axiosInstance.interceptors.request.use((config) => {
 
 // Simple data provider that calls Clay API directly
 export const dataProvider: DataProvider = {
-  getList: async ({ resource, pagination, filters, sorters, meta }) => {
+  getList: async ({ resource }) => {
     // Don't auto-fetch companies - they should be searched via Search page
     // This prevents CORS errors from auto-loading
     if (resource === 'companies') {
@@ -43,7 +43,7 @@ export const dataProvider: DataProvider = {
     return { data: [], total: 0 };
   },
   
-  getOne: async ({ resource, id, meta }) => {
+  getOne: async ({ id }) => {
     const response = await axiosInstance.get(`/companies/${id}`);
     const company = response.data;
     
@@ -58,12 +58,13 @@ export const dataProvider: DataProvider = {
         employeeCount: company.employee_count || company.employees || company.headcount,
         revenue: company.revenue || company.annual_revenue || '',
         website: company.website || company.website_url || company.domain || '',
-      },
+      } as any,
     };
   },
   
-  custom: {
-    search: async ({ url, method, payload, meta }) => {
+  custom: async ({ url, method, payload }) => {
+    // Handle search custom method
+    if (url === 'search' || method === 'search' || (payload as any)?.query) {
       try {
         // Check if API key is configured
         if (!CLAY_API_KEY) {
@@ -120,7 +121,10 @@ export const dataProvider: DataProvider = {
           throw new Error(error.message || 'Failed to search companies');
         }
       }
-    },
+    }
+    
+    // Default custom handler
+    throw new Error(`Custom method not implemented: ${url || method}`);
   },
 };
 

@@ -84,9 +84,9 @@ export const SearchPage = () => {
         
         if (status === 404) {
           errorMessage = `404 Not Found: The endpoint doesn't exist. ` +
-            `Please check Clay API documentation for the correct endpoint. ` +
-            `Tried: ${CLAY_API_URL}/v1/search. ` +
-            `You may need to update the endpoint in the code.`;
+            `Please check that the backend is running and accessible. ` +
+            `Tried: ${BACKEND_API_URL}/api/search. ` +
+            `Make sure the backend URL is correct.`;
         } else if (responseData?.message) {
           errorMessage = responseData.message;
         } else if (responseData?.error) {
