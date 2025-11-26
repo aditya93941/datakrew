@@ -6,10 +6,12 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: {
-      // Proxy API calls to backend server
+      // Proxy API calls to backend server (only for local development)
+      // In production, frontend calls backend directly via VITE_BACKEND_API_URL
       '/api': {
-        target: 'http://localhost:3000',
+        target: 'https://datakrew.onrender.com',
         changeOrigin: true,
+        secure: true, // For HTTPS backends
       },
     },
   },

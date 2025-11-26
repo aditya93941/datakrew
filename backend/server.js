@@ -213,30 +213,8 @@ app.listen(PORT, () => {
     console.log(`   Column name: ${process.env.CLAY_COLUMN_NAME || 'address'}`);
   }
   console.log(`\n📋 Setup Instructions:`);
-  console.log(`   1. Configure Clay HTTP API action to POST to: http://localhost:${PORT}/api/clay-data`);
-  console.log(`   2. For local dev, use ngrok: ngrok http ${PORT}`);
-  console.log(`   3. Make sure Clay sends '${process.env.CLAY_COLUMN_NAME || 'address'}' field with original search text`);
-  console.log(`   4. Search → Clay enriches → Results cached → Next search returns results!`);
-  if (!CLAY_API_KEY || !CLAY_TABLE_ID) {
-    console.log(`   ⚠️  To get real search results, you need:`);
-    if (!CLAY_API_KEY) {
-      console.log(`      - CLAY_API_KEY (from Clay dashboard → Settings → API Keys)`);
-    }
-    if (!CLAY_TABLE_ID) {
-      console.log(`      - CLAY_TABLE_ID (from Clay dashboard → Your Table → Settings or URL)`);
-    }
-  }
-  if (CLAY_API_KEY && CLAY_TABLE_ID) {
-    if (!CLAY_WORKSPACE_ID || !CLAY_WORKBOOK_ID) {
-      console.log(`   💡 Tip: Add from your table URL for better API compatibility:`);
-      console.log(`      Format: https://app.clay.com/workspaces/XXX/workbooks/wb_XXX/tables/t_XXX`);
-      if (!CLAY_WORKSPACE_ID) {
-        console.log(`      - CLAY_WORKSPACE_ID (number after /workspaces/)`);
-      }
-      if (!CLAY_WORKBOOK_ID) {
-        console.log(`      - CLAY_WORKBOOK_ID (starts with wb_)`);
-      }
-    }
-  }
+  console.log(`   1. Configure Clay HTTP API action to POST to: https://datakrew.onrender.com/api/clay-data`);
+  console.log(`   2. Make sure Clay sends '${process.env.CLAY_COLUMN_NAME || 'address'}' field with original search text`);
+  console.log(`   3. Search → Clay enriches → Results cached → Next search returns results!`);
 });
 

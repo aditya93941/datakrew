@@ -19,7 +19,7 @@ interface Company {
 
 // Backend API Configuration
 // Frontend calls our backend, which then calls Clay webhook
-const BACKEND_API_URL = import.meta.env.VITE_BACKEND_API_URL || 'http://localhost:3000';
+const BACKEND_API_URL = import.meta.env.VITE_BACKEND_API_URL || 'https://datakrew.onrender.com';
 
 const axiosInstance = axios.create({
   baseURL: BACKEND_API_URL,
